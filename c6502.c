@@ -1,7 +1,9 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
+
 #include "c6502.h"
+#define CHIPS_IMPL
 #include "m6502.h"
 
 m6502_t cpu;
