@@ -23,8 +23,8 @@ void c6502_deinit(void)
 
 void c6502_update(C6502_interface *interface)
 {
+    M6502_SET_DATA(pins,interface->data);
     pins = m6502_tick(&cpu, pins);
-
     interface->data = M6502_GET_DATA(pins);
     interface->address =  M6502_GET_ADDR(pins);
     interface->rw = M6502_GET_RW(pins);
