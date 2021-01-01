@@ -14,6 +14,7 @@ uint64_t pins;
 void c6502_init(void)
 {
     pins = m6502_init(&cpu, &(m6502_desc_t){ });
+    pins |= (0x5DULL<<24); 
 }
 
 void c6502_deinit(void)
@@ -28,4 +29,5 @@ void c6502_update(C6502_interface *interface)
     interface->data = M6502_GET_DATA(pins);
     interface->address =  M6502_GET_ADDR(pins);
     interface->rw = M6502_GET_RW(pins);
+//    printf("control c6502 = %02X\n", ((pins >> 24)& 0xFF));
 }
