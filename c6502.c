@@ -19,8 +19,7 @@ uint64_t pins;
 
 void c6502_init(void)
 {
-    pins = m6502_init(&cpu, &(m6502_desc_t){ });
-//    pins |= M6502_RW | M6502_SYNC | M6502_IRQ | M6502_NMI | M6502_RDY | M6502_RES;
+    pins = m6502_init(&cpu, &(m6502_desc_t){0});
 }
 
 void c6502_deinit(void)
@@ -51,6 +50,4 @@ void c6502_update(C6502_interface *interface)
     interface->pc = m6502_pc(&cpu);
     interface->ir = cpu.IR >> 3;
     interface->c = cpu.IR & 0x07;
-
-
 }
