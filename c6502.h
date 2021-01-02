@@ -12,16 +12,18 @@ uint16_t    address;
 bool        rw;
 bool        sync;
 bool        irq;
+bool        nmi;
 bool        rdy;
 bool        res;
 bool        clk0;
 // registers
+uint8_t     ir; // instruction register
+uint8_t     c;  // instruction cycle count
 uint8_t     a;
 uint8_t     x;
 uint8_t     y;
 uint8_t     p;
-uint8_t     ir;
-uint8_t     sp;
+uint8_t     s;
 uint16_t    pc;
 } C6502_interface;
 
