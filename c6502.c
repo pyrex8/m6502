@@ -6,9 +6,6 @@
 #define CHIPS_IMPL
 #include "m6502.h"
 
-m6502_t cpu;
-uint64_t pins;
-
 #define M6502_GET_RW(p) ((uint8_t)((p & M6502_RW)>>24))
 #define M6502_GET_SYNC(p) ((uint8_t)((p & M6502_SYNC)>>25))
 #define M6502_GET_IRQ(p) ((uint8_t)((p & M6502_IRQ)>>26))
@@ -16,6 +13,8 @@ uint64_t pins;
 #define M6502_GET_RDY(p) ((uint8_t)((p & M6502_RDY)>>28))
 #define M6502_GET_RES(p) ((uint8_t)((p & M6502_RES)>>30))
 
+static m6502_t cpu;
+static uint64_t pins;
 
 void c6502_init(void)
 {
