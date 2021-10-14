@@ -13,6 +13,8 @@
 #define M6502_GET_RDY(p) ((uint8_t)((p & M6502_RDY)>>28))
 #define M6502_GET_RES(p) ((uint8_t)((p & M6502_RES)>>30))
 
+#define M6502_SET_RES(p) ((uint8_t)((p & M6502_RES)>>30))
+
 static m6502_t cpu;
 static uint64_t pins;
 
@@ -26,11 +28,21 @@ void c6502_deinit(void)
     // nothing here for now
 }
 
+void c6502_reset(C6502_interface *interface)
+{
+    pins |= M6502_RES;
+}
+
+void c6502_set_pc(C6502_interface *interface, uint16_t pc)
+{
+    m6502_set_pc(&cpu, pc);
+}
+
 void c6502_update(C6502_interface *interface)
 {
     if (pins & M6502_RW)
     {
-        M6502_SET_DATA(pins,interface->data);    
+        M6502_SET_DATA(pins,interface->data);
     }
     pins = m6502_tick(&cpu, pins);
     interface->data = M6502_GET_DATA(pins);

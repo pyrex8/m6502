@@ -29,6 +29,8 @@ uint16_t    pc;
 
 void c6502_init(void);
 void c6502_deinit(void);
+void c6502_reset(C6502_interface *interface);
+void c6502_set_pc(C6502_interface *interface, uint16_t pc);
 void c6502_update(C6502_interface *interface);
 
 #endif /* _C6502_ */
