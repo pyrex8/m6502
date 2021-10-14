@@ -33,11 +33,6 @@ void c6502_reset(C6502_interface *interface)
     pins |= M6502_RES;
 }
 
-void c6502_set_pc(C6502_interface *interface, uint16_t pc)
-{
-    m6502_set_pc(&cpu, pc);
-}
-
 void c6502_update(C6502_interface *interface)
 {
     if (pins & M6502_RW)
